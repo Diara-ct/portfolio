@@ -3,6 +3,6 @@
 return [
     'host' => 'smtp.gmail.com',
     'username' => 'hello.diaratoure@gmail.com',
-    'password' => 'gqmpeaptqufonbiy',
+    'password' => '',
     'port' => 587,
 ];
