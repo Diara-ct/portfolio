@@ -1,0 +1,168 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nous contacter</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body class="body4">
+
+
+    <header>
+
+        <div class="countdown">
+            <span id="days">00</span>d :
+            <span id="hours">00</span>h :
+            <span id="minutes">00</span>m :
+            <span id="seconds">00</span>s
+        </div>
+
+        <div class="menu">
+            <div class="logo">
+                <img src="images/logo_black.png">
+            </div>
+
+            <nav class="first-menu4">
+                <a href="index.html" class="hov">ACCUEIL</a>
+                <a href="about.html" class="hov">À PROPOS</a>
+                <a href="collection.html" class="hov">COLLECTION</a>
+                <a href="contact.html" class="hov">CONTACT</a>
+            </nav>
+
+            <div class="icons">
+                <a href="#" title="Connexion (non disponible dans la démo)"><i class="bi bi-person"></i></a>
+                 <a href="#" id="openCart" class="cart-icon">
+                    <i class="bi bi-basket2-fill"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+        </div>
+
+    </header>
+    <div class="second-header">
+        <div class="mini-menu">
+            <a href="collection.html" class="hov1">
+                <p>RÉSEAUX</p>
+            </a>
+            <a href="collection.html" class="hov2">
+                <p class="red4">WORLD TOUR</p>
+            </a>
+            <a href="collection.html" class="hov1">
+                <p>À VENIR</p>
+            </a>
+        </div>
+    </div>
+    <section class="contact-section4">
+
+        <div class="contact-container4">
+
+            <h1 class="contact-title4">CONTACT</h1>
+            <p class="contact-subtitle4">Une question, une collaboration ou un projet ? Nous vous répondons rapidement.
+            </p>
+
+            <div class="contact-content4">
+
+                <form class="contact-form4">
+                    <div class="input-group4">
+                        <input type="text" required>
+                        <label>Nom complet</label>
+                    </div>
+
+                    <div class="input-group4">
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+
+                    <div class="input-group4">
+                        <textarea required></textarea>
+                        <label>Message</label>
+                    </div>
+
+                    <button type="submit" class="contact-btn4">Envoyer</button>
+                </form>
+
+                <div class="contact-info4">
+                    <h3>Informations</h3>
+                    <p>📍 Lyon, France</p>
+                    <p>📞 07.67.27.56.18</p>
+                    <p>✉️ aven.contact@gmail.com</p>
+
+                    <div class="socials4">
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-tiktok"></i>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="footer3">
+
+        <div class="footer-col3-1">
+            <h4>Contact</h4>
+            <div class="row3">
+                <p>07.67.27.56.18</p>
+            </div>
+            <div class="row3">
+                <p>aven.contact@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-col3-1">
+            <h4>Horaires</h4>
+            <p>Lundi - Vendredi : 09h00 - 17h00</p>
+            <p>Samedi : 09h00 - 12h30</p>
+        </div>
+
+        <div class="footer-col3">
+            <h4>Suivez-nous</h4>
+            <div class="row3">
+                <i class="bi bi-instagram"></i>
+                <i class="bi bi-tiktok"></i>
+            </div>
+            <p class="text-footer3">Rejoignez notre communauté et suivez
+                <br> nos actualités et futurs drops
+            </p>
+        </div>
+
+    </footer>
+
+    <div class="footer-bottom3">
+        <div class="row4">
+            <i class="bi bi-c-circle"></i>
+            <p>2026 Avenue Studio. Tous droits réservés.</p>
+        </div>
+    </div>
+    <div id="avenCart" class="aven-cart-panel">
+
+    <div class="aven-cart-header">
+        <h2>Panier</h2>
+        <span id="closeCart">&times;</span>
+    </div>
+
+    <div class="aven-cart-content"></div>
+
+    <div class="aven-cart-footer">
+        <p>Total : <strong>€<span id="cartTotal">0</span></strong></p>
+        <a href="shop.html" class="aven-go-cart">Voir panier</a>
+    </div>
+
+</div>
+
+<div id="overlayCart"></div>
+    <script src="main1.js"></script>
+<script src="products.js"></script>
+<script src="demo.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - DYA</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">DIARA TOURE</a>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="site-nav">
+          <div class="nav-center">
+            <a href="index.html" class="nav-link" data-i18n="navHome">Accueil</a>
+            <a href="about.html" class="nav-link" data-i18n="navAbout">À propos</a>
+            <a href="projects.html" class="nav-link active" data-i18n="navProjects">Projets</a>
+            <a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a href="assets/mon_CV.pdf" class="cv-btn" data-i18n="navCv" download>CV</a>
+            <div class="lang-switch">
+              <button data-lang="fr" class="active">FR</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="es">ES</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="detail-hero fade">
+        <a class="back" href="projects.html" data-i18n="backProjects">Retour aux projets</a>
+        <span class="status" data-i18n="statusLive">En ligne · Version 1</span>
+        <h1 class="section-title">DYA</h1>
+        <p class="lead" data-i18n="dyaLead">Une mini interface pour apprendre le langage du football, avec des leçons, des tests, des quiz, un espace notes et une assistante IA qui répond aux questions liées au foot.</p>
+        <div class="btn-row"><a class="btn primary" href="https://dya-api.alwaysdata.net/" target="_blank" rel="noopener" data-i18n="visitSite">Visiter le site</a></div>
+      </section>
+
+      <section class="split fade">
+        <article class="panel"><h2 data-i18n="features">Fonctionnalités</h2>
+          <ul class="clean">
+            <li data-i18n="dyaF1">Leçons pour comprendre le vocabulaire et le jeu</li>
+            <li data-i18n="dyaF2">Tests et quiz pour mesurer son niveau</li>
+            <li data-i18n="dyaF3">Espace notes pour retenir l'essentiel</li>
+            <li data-i18n="dyaF4">Assistante IA dédiée aux questions de foot</li>
+          </ul></article>
+        <article class="panel note"><h2 data-i18n="dyaEvoTitle">Une application qui évolue</h2>
+          <p class="section-sub" data-i18n="dyaEvoText">DYA est aujourd'hui une première version : une interface. Elle deviendra peu à peu une véritable application, au fil des évolutions.</p></article>
+      </section>
+
+      <section class="fade"><h2 class="section-title" data-i18n="somePages">Quelques pages</h2>
+        <div class="screens"><figure class="screen"><div class="screen-bar"><i></i><i></i><i></i></div><div class="screen-body"><small>LE COIN DES CURIEUX DU FOOT</small><b>Les leçons,<br>pas à pas.</b><div class="chips"><u>Règles</u><u>Postes</u><u>Tactique</u></div></div><figcaption><span data-i18n="scrLearn">Apprendre</span></figcaption></figure><figure class="screen"><div class="screen-bar"><i></i><i></i><i></i></div><div class="screen-body"><small>DYA · TON PARCOURS</small><b>Apprends le football, à ton rythme.</b><div class="rows"><s class="ok">Hors-jeu ✓</s><s>Les postes</s><s class="lock">Tactique 🔒</s></div></div><figcaption><span data-i18n="scrQuiz">Quiz</span></figcaption></figure><figure class="screen"><div class="screen-bar"><i></i><i></i><i></i></div><div class="screen-body"><small>TON COACH FOOTBALL IA</small><b>Comprends le jeu.<br>À ta façon.</b><div class="bubble">C'est quoi le hors-jeu ?</div><div class="bubble me">Une règle qui…</div></div><figcaption><span data-i18n="scrAssistant">Assistant IA</span></figcaption></figure><figure class="screen"><div class="screen-bar"><i></i><i></i><i></i></div><div class="screen-body"><small>TON ESPACE PERSONNEL</small><b>Les idées qui font le jeu.</b><div class="notes"><em>TACTIQUE</em><em>À RETENIR</em></div></div><figcaption><span data-i18n="scrNotes">Notes</span></figcaption></figure></div>
+        <p class="section-sub caption" data-i18n="screensNote">Aperçus illustratifs de l'interface. Le site complet est en ligne.</p>
+      </section>
+
+      <section class="fade" id="personas">
+        <h2 class="section-title" data-i18n="personasTitle">Personas</h2>
+        <p class="section-sub" data-i18n="personasSub">Clique sur un persona pour découvrir son profil et ses centres d'intérêt.</p>
+        <div class="persona-carousel" data-persona="dya">
+          <div class="persona-stack"></div>
+          <div class="persona-nav">
+            <button class="p-arrow" data-dir="-1" aria-label="Précédent">←</button>
+            <div class="p-dots"></div>
+            <button class="p-arrow" data-dir="1" aria-label="Suivant">→</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container" data-i18n="footerText">© 2026 Diara Touré · Basée à Lyon, France</div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Fédération Premier League</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">DIARA TOURE</a>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="site-nav">
+          <div class="nav-center">
+            <a href="index.html" class="nav-link" data-i18n="navHome">Accueil</a>
+            <a href="about.html" class="nav-link" data-i18n="navAbout">À propos</a>
+            <a href="projects.html" class="nav-link active" data-i18n="navProjects">Projets</a>
+            <a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a href="assets/mon_CV.pdf" class="cv-btn" data-i18n="navCv" download>CV</a>
+            <div class="lang-switch">
+              <button data-lang="fr" class="active">FR</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="es">ES</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+  <section class="detail-hero fade"><a class="back" href="projects.html"><span data-i18n="n135">Retour aux projets</span></a>
+   <span class="status" data-i18n="n136">PHP · MySQL · démo en ligne</span>
+   <h1 class="section-title">Fédération Premier League</h1>
+   <p class="lead" data-i18n="n137">Un projet de gestion d’une fédération sportive, ici la Premier League : un espace public pour suivre les résultats, les joueurs et les clubs, et un espace administration pour tout gérer.</p>
+   <div class="tags" style="margin-top:14px"><span>PHP</span><span>MySQL</span><span>CSS</span><span>JavaScript</span></div></section>
+  <section class="fade"><h2 class="section-title"><span data-i18n="n138">Le projet en démonstration</span></h2>
+   <p class="section-sub" data-i18n="n139">Choisis un espace. Dans l’administration (identifiants préremplis), ajoute, modifie ou supprime des joueurs et des clubs : le site public se met à jour. Données fictives, enregistrées uniquement dans ton navigateur.</p>
+   <div class="shot-tabs" style="margin-top:18px"><button class="shot-tab active" data-src="federation-demo/index.html"><span data-i18n="n140">Espace public</span></button><button class="shot-tab" data-src="federation-demo/login.html"><span data-i18n="n141">Espace administration</span></button></div>
+   <div class="frame demo"><div class="screen-bar"><i></i><i></i><i></i><em class="url">federation</em><a class="open" data-i18n="n142" id="fedOpen" href="federation-demo/index.html" target="_blank" rel="noopener">Plein écran ↗</a></div>
+    <iframe id="fedFrame" src="federation-demo/index.html" title="Fédération Premier League" loading="lazy"></iframe></div></section>
+  <section class="split fade">
+   <article class="panel"><h2><span data-i18n="n143">Espace public</span></h2><ul class="clean"><li data-i18n="n144">Derniers résultats et scores des matchs</li><li data-i18n="n145">Liste des joueurs, avec recherche et profil</li><li data-i18n="n146">Liste des clubs et de leurs joueurs</li></ul></article>
+   <article class="panel note"><h2><span data-i18n="n147">Espace administration</span></h2><ul class="clean"><li data-i18n="n148">Ajouter, supprimer et modifier un joueur : poste, âge, numéro, équipe</li><li data-i18n="n149">Ajouter ou supprimer un club</li><li data-i18n="n150">Gérer les résultats des matchs</li></ul></article>
+  </section>
+  <script>document.querySelectorAll('.shot-tab[data-src]').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.shot-tab[data-src]').forEach(function(x){x.classList.toggle('active',x===b)});document.getElementById('fedFrame').src=b.dataset.src;document.getElementById('fedOpen').href=b.dataset.src})})</script></main>
+
+    <footer class="footer">
+      <div class="container" data-i18n="footerText">© 2026 Diara Touré · Basée à Lyon, France</div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+  </body>
+</html>

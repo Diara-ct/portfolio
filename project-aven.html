@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Aven Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">DIARA TOURE</a>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="site-nav">
+          <div class="nav-center">
+            <a href="index.html" class="nav-link" data-i18n="navHome">Accueil</a>
+            <a href="about.html" class="nav-link" data-i18n="navAbout">À propos</a>
+            <a href="projects.html" class="nav-link active" data-i18n="navProjects">Projets</a>
+            <a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a href="assets/mon_CV.pdf" class="cv-btn" data-i18n="navCv" download>CV</a>
+            <div class="lang-switch">
+              <button data-lang="fr" class="active">FR</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="es">ES</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+  <section class="detail-hero fade"><a class="back" href="projects.html"><span data-i18n="n110">Retour aux projets</span></a>
+   <span class="status" data-i18n="n111">Développé en PHP · pas encore publié</span>
+   <h1 class="section-title">Aven Studio</h1>
+   <p class="lead" data-i18n="n112">Boutique en ligne d’une marque de t-shirts minimalistes. Le premier drop, « World Tour », propose une pièce par pays, avec un fil rouge pour relier les cultures.</p>
+   <div class="tags" style="margin-top:14px"><span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSS</span></div></section>
+  <section class="fade"><h2 class="section-title"><span data-i18n="n113">Le site en démonstration</span></h2>
+   <p class="section-sub" data-i18n="n114">Navigue dans le site, filtre la collection et ajoute des pièces au panier. Le site complet, avec sa base de données, n’est pas encore publié : le panier est ici simulé dans ton navigateur.</p>
+   <div class="frame demo"><div class="screen-bar"><i></i><i></i><i></i><em class="url">aven-studio</em><a class="open" data-i18n="n115" href="aven-demo/index.html" target="_blank" rel="noopener">Plein écran ↗</a></div>
+    <iframe src="aven-demo/index.html" title="Aven Studio" loading="lazy"></iframe></div></section>
+  <section class="split fade">
+   <article class="panel"><h2><span data-i18n="n116">Ce que contient le site</span></h2><ul class="clean"><li data-i18n="n117">Page d’accueil, collection et fiches produit</li><li data-i18n="n118">Panier et gestion de session en PHP</li><li data-i18n="n119">Filtres de la collection par continent</li><li data-i18n="n120">Pages histoire de la marque et contact</li></ul></article>
+   <article class="panel note"><h2><span data-i18n="n121">Le concept</span></h2><p class="section-sub" data-i18n="n122">Chaque t-shirt incarne un pays, son ambiance et son identité, dans un style épuré. Le rouge relie l’ensemble de la collection.</p></article>
+  </section></main>
+
+    <footer class="footer">
+      <div class="container" data-i18n="footerText">© 2026 Diara Touré · Basée à Lyon, France</div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+  </body>
+</html>

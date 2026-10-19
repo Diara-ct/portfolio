@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - E-book Keyaa</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">DIARA TOURE</a>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="site-nav">
+          <div class="nav-center">
+            <a href="index.html" class="nav-link" data-i18n="navHome">Accueil</a>
+            <a href="about.html" class="nav-link" data-i18n="navAbout">À propos</a>
+            <a href="projects.html" class="nav-link active" data-i18n="navProjects">Projets</a>
+            <a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a href="assets/mon_CV.pdf" class="cv-btn" data-i18n="navCv" download>CV</a>
+            <div class="lang-switch">
+              <button data-lang="fr" class="active">FR</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="es">ES</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+  <section class="detail-hero fade"><a class="back" href="projects.html"><span data-i18n="n123">Retour aux projets</span></a>
+   <span class="status" data-i18n="n124">Stage · réalisé à deux</span>
+   <h1 class="section-title">E-book Keyaa Superfoods</h1>
+   <p class="lead" data-i18n="n125">« Snacks sains et gourmands » : un e-book de plus de 30 recettes, conçu avec une autre stagiaire pour montrer aux clients qu’on peut tout faire avec les produits Keyaa et les adapter à son quotidien.</p>
+   <div class="btn-row" data-canva-row><a class="btn primary" href="#" target="_blank" rel="noopener" data-canva><span data-i18n="n126">Lire l’e-book complet sur Canva</span></a></div></section>
+  <section class="fade"><h2 class="section-title"><span data-i18n="n127">Feuilleter l’e-book</span></h2>
+   <p class="section-sub" data-i18n="n128">Feuillette quelques pages : couverture, chapitres sur les superaliments, recettes. Clique sur une page, utilise les flèches ou glisse. L’e-book complet est disponible sur Canva.</p>
+   <div class="book" id="book"><div class="book-stage"><div class="book-page"><div class="book-ph">Keyaa<small>E-book</small></div></div></div>
+    <div class="book-nav"><button class="p-arrow" id="bprev">←</button><span id="bcount"></span><button class="p-arrow" id="bnext">→</button></div></div></section>
+  <section class="split fade"><article class="panel"><h2><span data-i18n="n129">Dans l’e-book</span></h2><ul class="clean"><li data-i18n="n130">Des chapitres sur le baobab,le moringa et l'hibiscus : bienfaits, recettes et astuces</li><li data-i18n="n131">Des recettes avec ingrédients, préparation et conseils Keyaa</li><li data-i18n="n132">Une mise en page soignée sous Canva, à deux</li></ul></article>
+   <article class="panel note"><h2><span data-i18n="n133">L’objectif</span></h2><p class="section-sub" data-i18n="n134">Montrer que les produits Keyaa, sains, s’adaptent à toutes les envies et à tous les moments de la journée.</p></article></section></main>
+
+    <footer class="footer">
+      <div class="container" data-i18n="footerText">© 2026 Diara Touré · Basée à Lyon, France</div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+    <script src="ebook.js"></script>
+  </body>
+</html>

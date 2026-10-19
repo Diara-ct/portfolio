@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Athlete Digital Experience</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="premium.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="index.html">DIARA TOURE</a>
+        <button class="menu-toggle" aria-label="Ouvrir le menu">☰</button>
+        <nav class="site-nav">
+          <div class="nav-center">
+            <a href="index.html" class="nav-link" data-i18n="navHome">Accueil</a>
+            <a href="about.html" class="nav-link" data-i18n="navAbout">À propos</a>
+            <a href="projects.html" class="nav-link active" data-i18n="navProjects">Projets</a>
+            <a href="contact.html" class="nav-link" data-i18n="navContact">Contact</a>
+          </div>
+          <div class="nav-right">
+            <a href="assets/mon_CV.pdf" class="cv-btn" data-i18n="navCv" download>CV</a>
+            <div class="lang-switch">
+              <button data-lang="fr" class="active">FR</button>
+              <button data-lang="en">EN</button>
+              <button data-lang="es">ES</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="detail-hero fade">
+        <a class="back" href="projects.html" data-i18n="backProjects">Retour aux projets</a>
+        <span class="status" data-i18n="statusFigma">Landing page codée · reste du projet sur Figma</span>
+        <h1 class="section-title">Athlete Digital Experience</h1>
+        <p class="lead" data-i18n="adeLead">Un projet qui met en valeur deux athlètes : Emma, gymnaste, et Mathéo, passionné de musculation. On découvre leur univers, leur quotidien et leurs conseils à travers une interview et un reportage.</p>
+        <div class="btn-row"><a class="btn primary" href="#" target="_blank" rel="noopener" data-i18n="viewFigma">Voir sur Figma</a></div>
+      </section>
+
+      <section class="fade"><h2 class="section-title" data-i18n="landingTitle">La landing page</h2>
+        <div class="landing-frame"><div class="screen-bar"><i></i><i></i><i></i></div><div class="landing-scroll"><img src="assets/athlete-landing.jpg" alt="Landing page Athlete Digital Experience" /></div></div>
+        <p class="section-sub caption" data-i18n="landingNote">Seule la landing page est codée. Les pages d'Emma et de Mathéo, l'interview et le reportage sont à découvrir sur Figma.</p>
+      </section>
+
+      <section class="fade" id="personas">
+        <h2 class="section-title" data-i18n="personasTitle">Personas</h2>
+        <p class="section-sub" data-i18n="personasSub">Clique sur un persona pour découvrir son profil et ses centres d'intérêt.</p>
+        <div class="persona-carousel" data-persona="ade">
+          <div class="persona-stack"></div>
+          <div class="persona-nav">
+            <button class="p-arrow" data-dir="-1" aria-label="Précédent">←</button>
+            <div class="p-dots"></div>
+            <button class="p-arrow" data-dir="1" aria-label="Suivant">→</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container" data-i18n="footerText">© 2026 Diara Touré · Basée à Lyon, France</div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="premium.js"></script>
+  </body>
+</html>

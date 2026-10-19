@@ -1,0 +1,617 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* BODY */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+    overflow-x: hidden;
+}
+
+/* BACKGROUND */
+.bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.ball {
+    position: absolute;
+    width: 750px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    opacity: 0.4;
+    /* 🔥 augmente */
+
+    animation: rotateBall 20s linear infinite;
+
+    filter:
+        invert(1) drop-shadow(0 0 80px #5b21b6) drop-shadow(0 0 150px #800020) drop-shadow(0 0 250px #5b21b6) contrast(1.4) brightness(1.2);
+}
+
+@keyframes rotateBall {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #e5e7eb66, #d1d5db66);
+}
+
+/* CARD */
+.card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px;
+}
+.card1 {
+    position: relative;
+    z-index: 2;
+    width: 35%;
+    min-height: 100vh;
+    padding: 60px;
+}
+.card3 {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 10px;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* SPECIFIQUE manage_teams */
+.manage-teams {
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* SPECIFIQUE manage_players */
+.manage-players {
+    width: 100%;
+    padding: 40px;
+}
+
+/* HEADER */
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.pl-logo {
+    width: 100px;
+}
+
+.header h1 {
+    text-align: center;
+}
+
+/* TITRE */
+h1 {
+    font-size: 28px;
+    color: #111827;
+    margin-top: 10px;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* BOUTONS */
+button,
+.btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    background: linear-gradient(135deg, #800020, #5b21b6);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 20px;
+      margin-bottom: 20px;
+}
+
+.space{
+    margin-top:10px;
+}
+.btn1 {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    background: #800020;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+button:hover,
+.btn:hover {
+    transform: scale(1.05);
+}
+
+
+.delete-btn {
+    background:  #800020;
+    padding: 10px;
+}
+
+/* ===== MANAGE TEAMS ===== */
+
+.teams-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;
+    flex-wrap: nowrap;
+    margin-top: 40px;
+}
+
+.team-item {
+    text-align: center;
+    width: 160px;
+}
+
+.team-logo {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.team-item p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+/* ===== MANAGE PLAYERS ===== */
+
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.players-table th {
+    background: #800020;
+    color: white;
+    padding: 15px;
+}
+
+.players-table td {
+    padding: 12px;
+    text-align: center;
+}
+
+.players-table tr {
+    border-bottom: 1px solid #ddd;
+}
+
+/* ===== LOGIN PAGE PREMIUM ===== */
+
+body.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-page .card {
+    width: 400px;
+    /* taille fixe */
+    padding: 35px;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(20px);
+
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+
+    text-align: center;
+
+    min-height: auto;
+    /* 🔥 IMPORTANT */
+}
+
+/* TITRE */
+.login-page h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+/* TEXTE */
+.login-page .subtitle {
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+/* INPUTS PREMIUM */
+.login-page input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+
+    transition: 0.3s;
+}
+
+.login-page input:focus {
+    border: 1px solid #5b21b6;
+    box-shadow: 0 0 15px #5b21b655;
+    transform: scale(1.02);
+    margin-top: 5px;
+}
+
+/* BOUTON PREMIUM */
+.login-page button {
+    width: 60%;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 20px;
+    background: linear-gradient(135deg, #800020, #5b21b6);
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.login-page button:hover {
+    transform: translateY(-3px) scale(1.05);
+
+    box-shadow:
+        0 0 15px #5b21b6,
+        0 0 20px #800020;
+}
+
+/* LOGO */
+.login-page img {
+    margin-bottom: 15px;
+}
+
+/* ERROR */
+.login-page .error {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.edit-player {
+    width: 420px;
+    margin: auto;
+}
+
+.edit-player input {
+    margin-bottom: 12px;
+}
+
+.preview {
+    width: 120px;
+    margin: 10px auto;
+    display: block;
+}
+
+.positions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.positions label {
+    background: white;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.card-photo {
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.players-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 30px;
+    table-layout: fixed;
+}
+
+.players-table td {
+    max-width: 80px;
+}
+
+.players-table img {
+    display: block;
+    margin: auto;
+    width: 60px !important;
+    height: 60px !important;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.add-player-card {
+    width: 420px;
+    margin: 80px auto;
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.add-player-card input,
+.add-player-card select {
+    margin-bottom: 15px;
+}
+
+.add-player-card {
+    width: 420px;
+    margin: 80px auto;
+    padding: 30px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.add-player-card input,
+.add-player-card select {
+    margin-bottom: 15px;
+}
+
+/* PAGE ADD PLAYER */
+.add-player-page {
+    display: flex;
+    flex-direction: column;
+}
+
+/* TITRE EN HAUT */
+.add-player-page .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+/* CONTENU CENTRÉ */
+.form-container {
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* INPUT ESPACÉS */
+.form-container input,
+.form-container select {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+/* POSITIONS PROPRES */
+.form-container .positions {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+/* ALIGNEMENT RADIO + TEXTE */
+.form-container .positions label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    gap: 5px;
+}
+
+
+/* BOUTON CENTRÉ */
+.form-container button {
+    display: block;
+    margin: 20px auto;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.team img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+}
+
+.date {
+    text-align: center;
+    font-weight: 600;
+}
+
+.bottom-actions {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 80px;
+}
+.match-box {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.card2 {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    min-height: 100vh;
+    padding: 60px
+}
+
+.team {
+    text-align: center;
+    width: 140px;
+}
+
+.team-logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.date {
+    text-align: center;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.fifa-card1 {
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+}
+
+.title1 {
+    margin-bottom: 20px;
+}
+
+.match-box1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin: 40px 0;
+}
+
+.team1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 130px;
+}
+
+.team1-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+.team1-logo:hover {
+    transform: scale(1.1);
+}
+
+.score-box1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score1 {
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7;
+}
+
+.vs1 {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-top: 5px;
+}
+
+.date1 {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.retour1 {
+    display: inline-block;
+    margin-top: 25px;
+}

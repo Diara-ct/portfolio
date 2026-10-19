@@ -1,0 +1,75 @@
+(() => {
+  const KEY = "fed_demo_v1";
+  const LOGOS = { 1: "logo/logo_sunderland-Photoroom.png", 2: "https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_badge.svg", 3: "https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg", 4: "https://upload.wikimedia.org/wikipedia/en/c/c2/West_Ham_United_FC_logo.svg", 5: "https://upload.wikimedia.org/wikipedia/en/5/56/Newcastle_United_Logo.svg" };
+  const FALLBACK = "https://images.unsplash.com/photo-1518604666860-9ed391f76460";
+  const photo = (id) => ({ 1: "logo/player_id100.png" }[id] || (id !== 14 && id <= 31 ? `logo/player_id${id}.png` : FALLBACK));
+  // Données de démonstration : postes et âges indicatifs, résultats fictifs.
+  const P = (id, fn, ln, age, post, n, t) => ({ id, first_name: fn, last_name: ln, age, post, jersey_number: n, team_id: t });
+  const seed = () => ({
+    teams: [{ id: 1, name: "Sunderland", city: "Sunderland" }, { id: 2, name: "Manchester City", city: "Manchester" }, { id: 3, name: "Chelsea", city: "Londres" }, { id: 4, name: "West Ham United", city: "Londres" }, { id: 5, name: "Newcastle United", city: "Newcastle" }],
+    players: [P(1,"Habib","Diarra",22,"Milieu",19,1),P(2,"Noah","Sadiki",23,"Milieu",27,1),P(3,"Luke","O'Nien",32,"Défenseur",13,1),P(4,"Nilson","Angulo",21,"Attaquant",10,1),P(5,"Chemsdine","Talbi",21,"Attaquant",7,1),P(6,"Eliezer","Mayenda",20,"Attaquant",12,1),
+      P(7,"Mamadou","Sarr",20,"Défenseur",19,3),P(8,"Malo","Gusto",23,"Défenseur",27,3),P(9,"Teddy","Sharman-Lowe",24,"Gardien",28,3),P(10,"João","Pedro",24,"Attaquant",20,3),P(11,"Liam","Delap",23,"Attaquant",9,3),P(12,"Marc","Guiu",20,"Attaquant",38,3),
+      P(13,"James","Trafford",23,"Gardien",1,2),P(14,"Nathan","Aké",31,"Défenseur",6,2),P(15,"Omar","Marmoush",27,"Attaquant",7,2),P(16,"Nico","González",24,"Milieu",14,2),P(17,"Bernardo","Silva",31,"Milieu",20,2),P(18,"Erling","Haaland",26,"Attaquant",9,2),
+      P(19,"Alphonse","Areola",33,"Gardien",23,4),P(20,"Kyle","Walker-Peters",29,"Défenseur",2,4),P(21,"El Hadji Malick","Diouf",22,"Défenseur",12,4),P(22,"Mateus","Fernandes",22,"Milieu",18,4),P(23,"Jarrod","Bowen",29,"Attaquant",20,4),P(24,"Crysencio","Summerville",24,"Attaquant",7,4),
+      P(25,"Sven","Botman",26,"Défenseur",4,5),P(26,"Malick","Thiaw",25,"Défenseur",12,5),P(27,"William","Osula",22,"Attaquant",18,5),P(28,"John","Ruddy",39,"Gardien",26,5),P(29,"Sean","Neave",18,"Attaquant",62,5),P(30,"Lewis","Miley",20,"Milieu",67,5),P(31,"Joelinton","Cássio Apolinário de Lira",29,"Milieu",7,5)],
+    matches: [[1,1,3,2,1,"2026-08-16"],[2,2,4,3,0,"2026-08-23"],[3,5,1,1,1,"2026-08-30"],[4,3,2,2,2,"2026-09-13"],[5,4,5,0,2,"2026-09-20"],[6,1,2,0,1,"2026-09-27"],[7,3,4,3,1,"2026-10-04"],[8,5,3,2,0,"2026-10-11"]].map(([id,h,a,hs,as,d]) => ({ id, home_team_id: h, away_team_id: a, home_score: hs, away_score: as, match_date: d }))
+  });
+  const load = () => { try { const d = JSON.parse(localStorage.getItem(KEY)); if (d && d.teams) return d; } catch (e) {} return seed(); };
+  let db = load(); const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch (e) {} };
+  const nid = (a) => a.reduce((m, x) => Math.max(m, x.id), 0) + 1;
+  const team = (id) => db.teams.find((t) => t.id == id) || { name: "?", city: "" };
+  const fmt = (d) => (d ? d.split("-").reverse().join("/") : "-");
+  const q = new URLSearchParams(location.search), $ = (s) => document.querySelector(s), page = document.body.dataset.page;
+  const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const logo = (id) => LOGOS[id] || FALLBACK;
+  const adminPages = ["manage_teams", "manage_player", "add_player", "edit_player", "add_team", "admin_matches", "add_match"];
+  if (adminPages.includes(page) && sessionStorage.getItem("fed_admin") !== "1") { location.replace("login.html"); return; }
+  document.querySelectorAll("[data-logout]").forEach((a) => a.addEventListener("click", () => sessionStorage.removeItem("fed_admin")));
+  const teamOptions = (sel, ph) => (sel.innerHTML = `<option value="">${ph}</option>` + db.teams.map((t) => `<option value="${t.id}">${esc(t.name)}</option>`).join(""));
+  const playerCard = (p) => { const t = team(p.team_id); return `<div class="player-card9"><div class="player-img9"><img src="${photo(p.id)}"></div><div class="player-content9"><h3>${esc(p.first_name)} ${esc(p.last_name)}</h3><p>${esc(p.post)}</p><p class="team-info9">${esc(t.name)} • ${esc(t.city)}</p><span class="number9">#${p.jersey_number}</span><a href="player_detail.html?id=${p.id}" class="btn9">Voir profil</a></div></div>`; };
+  const matchesSorted = () => [...db.matches].sort((a, b) => (b.match_date || "").localeCompare(a.match_date || ""));
+
+  const R = {
+    index() { $("#last").innerHTML = matchesSorted().slice(0, 5).map((m) => `<div class="match-preview5"><span>${esc(team(m.home_team_id).name)}</span><strong>${m.home_score} - ${m.away_score}</strong><span>${esc(team(m.away_team_id).name)}</span><p>${fmt(m.match_date)}</p></div>`).join(""); },
+    teams() { const desc = q.get("order") === "desc"; const l = [...db.teams].sort((a, b) => a.name.localeCompare(b.name) * (desc ? -1 : 1)); $("#teams").innerHTML = l.map((t) => `<div class="card6"><img src="${logo(t.id)}"><div class="card6-content"><h3>${esc(t.name)}</h3><p>${esc(t.city || "Club professionnel")}</p><a href="team_details.html?team_id=${t.id}">Voir joueurs</a></div></div>`).join(""); },
+    team_details() { const t = db.teams.find((x) => x.id == q.get("team_id")); if (t) $("#banner").innerHTML = `<section class="team-banner9"><img class="team-logo9" src="${logo(t.id)}"><h2 class="team-name9">${esc(t.name)}</h2><p class="team-city9">${esc(t.city)}</p></section>`; $("#players").innerHTML = db.players.filter((p) => p.team_id == q.get("team_id")).map(playerCard).join("") || '<p style="text-align:center">Aucun joueur</p>'; },
+    players() { const s = (q.get("search") || "").toLowerCase(); if (q.get("search")) $("#search input").value = q.get("search"); const l = db.players.filter((p) => (!q.get("team_id") || p.team_id == q.get("team_id")) && (!s || (p.first_name + " " + p.last_name).toLowerCase().includes(s))); $("#players").innerHTML = l.map(playerCard).join("") || '<p style="text-align:center;">Aucun joueur trouvé</p>'; },
+    player_detail() { const p = db.players.find((x) => x.id == q.get("id")); if (!p) { $("#detail").innerHTML = "<p>Joueur introuvable</p>"; return; } $("#detail").innerHTML = `<div class="player-img10"><img src="${photo(p.id)}"></div><div class="player-info10"><h1>${esc(p.first_name)} ${esc(p.last_name)}</h1><p><strong>Poste :</strong> ${esc(p.post)}</p><p><strong>Numéro :</strong> #${p.jersey_number}</p><p><strong>Équipe :</strong> ${esc(team(p.team_id).name)}</p></div>`; },
+    matches() { let cur = null, html = ""; matchesSorted().forEach((m) => { const d = fmt(m.match_date); if (d !== cur) { if (cur !== null) html += "</div></div>"; cur = d; html += `<div class="date-group7"><h3 style="text-align:center;margin-top:30px">${d}</h3><div class="matches-grid5">`; } html += `<br><br><div class="match-card7"><div class="match-teams7"><div class="team7"><img src="${logo(m.home_team_id)}"><p>${esc(team(m.home_team_id).name)}</p></div><div class="score7">${m.home_score} - ${m.away_score}</div><div class="team7"><img src="${logo(m.away_team_id)}"><p>${esc(team(m.away_team_id).name)}</p></div></div><a href="match_detail.html?id=${m.id}" class="btn5">Voir détail</a></div>`; }); $("#matches").innerHTML = html + (cur !== null ? "</div></div>" : ""); },
+    match_detail() { const m = db.matches.find((x) => x.id == q.get("id")); if (!m) { $("#detail").innerHTML = "<p>Match introuvable</p>"; return; } $("#detail").innerHTML = `<div class="teams8"><div class="team8"><img src="${logo(m.home_team_id)}"><h2>${esc(team(m.home_team_id).name)}</h2></div><div class="score8">${m.home_score} - ${m.away_score}</div><div class="team8"><img src="${logo(m.away_team_id)}"><h2>${esc(team(m.away_team_id).name)}</h2></div></div><div class="infos8"><p><strong>Date :</strong> ${fmt(m.match_date)}</p></div>`; },
+    login() {
+      const c = $(".particles"); for (let i = 0; i < 30; i++) { const s = document.createElement("span"); s.style.left = Math.random() * 100 + "%"; s.style.animationDuration = 5 + Math.random() * 5 + "s"; s.style.opacity = Math.random(); c.appendChild(s); }
+      $("#loginForm").addEventListener("submit", (e) => { e.preventDefault(); const f = e.target; if (!f.email.value || !f.password.value) return alert("Tous les champs sont obligatoires !");
+        if (f.email.value === "admin@federation.fr" && f.password.value === "demo1234") { sessionStorage.setItem("fed_admin", "1"); location.href = "manage_teams.html"; } else { const er = $("#err"); er.style.display = "block"; er.textContent = "Email ou mot de passe incorrect (démo : admin@federation.fr / demo1234)"; } });
+    },
+    manage_teams() { $("#teams").innerHTML = db.teams.map((t) => `<div class="team-item"><img src="${logo(t.id)}" class="team-logo"><p>${esc(t.name)}</p><div style="display:flex;gap:10px;justify-content:center;margin-top:10px;"><a href="manage_player.html?team_id=${t.id}" class="btn">Gérer</a><button class="delete-btn" data-del="${t.id}">🗑️</button></div></div>`).join("");
+      document.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => { if (!confirm("Supprimer cette équipe et tous ses joueurs ?")) return; const id = +b.dataset.del; db.teams = db.teams.filter((t) => t.id !== id); db.players = db.players.filter((p) => p.team_id !== id); db.matches = db.matches.filter((m) => m.home_team_id !== id && m.away_team_id !== id); save(); R.manage_teams(); })); },
+    manage_player() { const tid = q.get("team_id"); if (tid) $("#addLink").href = "add_player.html?team_id=" + tid;
+      const draw = () => { $("#rows").innerHTML = db.players.filter((p) => !tid || p.team_id == tid).map((p) => `<tr data-id="${p.id}"><td><img src="${photo(p.id)}" class="card-photo"></td><td><input name="first_name" value="${esc(p.first_name)}"></td><td><input name="last_name" value="${esc(p.last_name)}"></td><td><input type="number" name="age" value="${p.age}"></td><td><input name="post" value="${esc(p.post)}"></td><td><input type="number" name="jersey_number" value="${p.jersey_number}"></td><td><img src="${logo(p.team_id)}" class="team-logo"></td><td><a href="edit_player.html?id=${p.id}" class="btn">✏️</a><button class="delete-btn" data-del="${p.id}">🗑️</button></td></tr>`).join("");
+        document.querySelectorAll("#rows input").forEach((i) => i.addEventListener("change", () => { const p = db.players.find((x) => x.id == i.closest("tr").dataset.id); p[i.name] = i.type === "number" ? +i.value : i.value; save(); }));
+        document.querySelectorAll("[data-del]").forEach((b) => b.addEventListener("click", () => { if (!confirm("Supprimer ce joueur ?")) return; db.players = db.players.filter((p) => p.id != b.dataset.del); save(); draw(); })); };
+      draw(); },
+    add_player() { const f = $("#f"); teamOptions(f.team_id, "Choisir équipe"); if (q.get("team_id")) f.team_id.value = q.get("team_id");
+      f.addEventListener("submit", (e) => { e.preventDefault(); const v = Object.fromEntries(new FormData(f)); const er = $("#err");
+        if (!v.first_name || !v.last_name || !v.age || !v.post || !v.jersey_number || !v.team_id) { er.style.display = "block"; er.textContent = "Tous les champs sont obligatoires."; return; }
+        if (db.players.some((p) => p.team_id == v.team_id && p.jersey_number == v.jersey_number)) { er.style.display = "block"; er.textContent = "Ce numéro est déjà pris dans cette équipe."; return; }
+        db.players.push({ id: nid(db.players), first_name: v.first_name, last_name: v.last_name, age: +v.age, post: v.post, jersey_number: +v.jersey_number, team_id: +v.team_id }); save(); location.href = "manage_player.html?team_id=" + v.team_id; }); },
+    edit_player() { const p = db.players.find((x) => x.id == q.get("id")); const f = $("#f"); if (!p) { location.href = "manage_player.html"; return; } teamOptions(f.team_id, "Équipe");
+      ["first_name", "last_name", "age", "jersey_number", "team_id"].forEach((k) => (f[k].value = p[k])); f.querySelectorAll("[name=post]").forEach((r) => (r.checked = r.value === p.post));
+      f.addEventListener("submit", (e) => { e.preventDefault(); const v = Object.fromEntries(new FormData(f)); Object.assign(p, { first_name: v.first_name, last_name: v.last_name, age: +v.age, post: v.post || p.post, jersey_number: +v.jersey_number, team_id: +v.team_id }); save(); location.href = "manage_player.html?team_id=" + p.team_id; });
+      $("#del").addEventListener("click", () => { if (!confirm("Supprimer ce joueur ?")) return; db.players = db.players.filter((x) => x.id !== p.id); save(); location.href = "manage_player.html"; }); },
+    add_team() { $("#f").addEventListener("submit", (e) => { e.preventDefault(); const v = Object.fromEntries(new FormData(e.target)); if (!v.name.trim()) return alert("Nom obligatoire"); db.teams.push({ id: nid(db.teams), name: v.name.trim(), city: v.city.trim() }); save(); location.href = "manage_teams.html"; }); },
+    admin_matches() { $("#rows").innerHTML = matchesSorted().map((m) => `<tr><td>${esc(team(m.home_team_id).name)}</td><td>${m.home_score} - ${m.away_score}</td><td>${esc(team(m.away_team_id).name)}</td><td>${fmt(m.match_date)}</td><td><a href="match_detail.html?id=${m.id}" class="btn">👁️</a></td></tr>`).join(""); },
+    add_match() { const f = $("#f"); teamOptions(f.home_team_id, "Equipe domicile"); teamOptions(f.away_team_id, "Equipe extérieur");
+      f.addEventListener("submit", (e) => { e.preventDefault(); const v = Object.fromEntries(new FormData(f)); const er = $("#err"); const bad = (m) => { er.style.display = "block"; er.textContent = m; };
+        if (!v.home_team_id || !v.away_team_id || v.home_score === "" || v.away_score === "" || !v.match_date) return bad("Tous les champs sont obligatoires.");
+        if (v.home_team_id === v.away_team_id) return bad("Les deux équipes doivent être différentes.");
+        db.matches.push({ id: nid(db.matches), home_team_id: +v.home_team_id, away_team_id: +v.away_team_id, home_score: +v.home_score, away_score: +v.away_score, match_date: v.match_date }); save(); location.href = "admin_matches.html"; }); }
+  };
+  R[page] && R[page]();
+  // bandeau démo
+  const bar = document.createElement("div"); bar.style.cssText = "position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:99999;background:rgba(20,5,10,.92);color:#fff;font:12px/1.3 sans-serif;padding:8px 14px;border-radius:999px;display:flex;gap:12px;align-items:center;box-shadow:0 6px 20px rgba(0,0,0,.3)";
+  bar.innerHTML = 'Démo · données fictives, modifications locales <button style="all:unset;cursor:pointer;color:#e7a3b5;font-weight:600">Réinitialiser</button>';
+  bar.querySelector("button").onclick = () => { localStorage.removeItem(KEY); location.reload(); };
+  document.body.appendChild(bar);
+})();
